@@ -9,8 +9,10 @@ updates:
     directory: "/model-db-client/" # Location of package manifests
     schedule:
       interval: "daily"
+    open-pull-requests-limit: 20
 
   - package-ecosystem: "npm"
     directory: "/model-db-api/"
     schedule:
       interval: "daily"
+    open-pull-requests-limit: 20
