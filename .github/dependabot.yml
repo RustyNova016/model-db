@@ -10,7 +10,7 @@ updates:
     schedule:
       interval: "daily"
 
-  - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/model-db-api/" # Location of package manifests
+  - package-ecosystem: "npm"
+    directory: "/model-db-api/"
     schedule:
       interval: "daily"
