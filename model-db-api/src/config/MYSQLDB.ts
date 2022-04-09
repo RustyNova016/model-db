@@ -1,18 +1,25 @@
-import mysqlx from "mysqlx";
+import mysqlx, {Session} from "mysqlx";
+import {ISchema} from "mysqlx/lib/interfaces";
 
-let connection = {
-    host: process.env.MYSQL_HOST,
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
-    port: 33060,
-};
-/** Mysql create a MySQL connection */
+/** Create a MySQL connection */
+let mySqlSession: null|Promise<Session> = null;
+let databaseSchema: null|Promise<ISchema> = null;
 
-const mySqlSession = mysqlx.getSession(connection);
+try {
+    mySqlSession = mysqlx.getSession({
+        host: process.env.MYSQL_HOST,
+        user: process.env.MYSQL_USER,
+        password: process.env.MYSQL_PASSWORD,
+        port: 33060,
+    });
 
-const databaseSchema = mySqlSession.then((value) => {
-    return value.getSchema("model-db");
-})
+    databaseSchema = mySqlSession.then((value) => {
+        return value.getSchema("model-db");
+    })
+} catch (error) {
+    console.log(error);
+}
+
 
 export {
     mySqlSession,
