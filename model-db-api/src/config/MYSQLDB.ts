@@ -1,7 +1,7 @@
 import mysqlx from "mysqlx";
 import {config} from "./config";
 
-/** Mysql connection */
+/** Mysql create a MySQL connection */
 
 const mySqlSession = mysqlx.getSession({
     host: config.MYSQL_HOST,

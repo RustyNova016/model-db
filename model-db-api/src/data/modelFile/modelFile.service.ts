@@ -3,23 +3,38 @@ import {getTable} from "../../tools/getTable";
 
 const modelFiles: any[] = []
 
-const modelFileTable = getTable("modelFile");
+const modelFileTable = getTable("modelfile");
 
 /**
  * Service Methods
  */
 
 export function findAll(){
-    return modelFileTable.then(
+    console.log("findAll");
+    let promise = modelFileTable.then(
         table => {
+            // Do a select on the table
             return table.select()
                 .execute()
-                .then(rows => {
-                        return rows.getRows()
+                .then(async rows => {
+                        console.log("log check")
+                        // Get the rows and check if it's an error or not
+                        let rowResult = rows.getRows();
+                        console.log("here's log result!")
+                        console.log(await rowResult);
+
+                        // Check if rowResult is not an array
+                        //if(!Array.isArray(rowResult)){
+                        //    throw new Error(rowResult.toString());
+                        //}
+
+                        return rowResult
                     }
                 )
         }
     );
+
+    return promise;
 }
 
 export const find = async (id: number): Promise<ModelFile> => modelFiles[id];
