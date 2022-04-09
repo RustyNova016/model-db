@@ -2,16 +2,15 @@ import {ModelFile, ModelFilePrototype} from "./modelFile.interface";
 import {getTable} from "../../tools/getTable";
 
 const modelFiles: any[] = []
-
 const modelFileTable = getTable("modelfile");
 
 /**
  * Service Methods
  */
 
-export function findAll(){
+export function findAll() {
     console.log("findAll");
-    let promise = modelFileTable.then(
+    return modelFileTable.then(
         table => {
             // Do a select on the table
             return table.select()
@@ -33,8 +32,6 @@ export function findAll(){
                 )
         }
     );
-
-    return promise;
 }
 
 export const find = async (id: number): Promise<ModelFile> => modelFiles[id];
