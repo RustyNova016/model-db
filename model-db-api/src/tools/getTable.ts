@@ -1,8 +1,9 @@
+/*
 import {ITable} from "mysqlx/lib/interfaces";
-import {databaseSchema} from "../config/MYSQLDB";
+import {databaseSchema} from "../config/MySQLConnection";
 
 export async function getTable(tableName: string): Promise<ITable> {
-    if (!databaseSchema) {
+    if (process.env.MY_SQL_CONNECTION_ESTABLISHED === "false") {
         throw new Error("Database schema not defined");
     }
     if (await checkIfTableExist(tableName)) {
@@ -20,3 +21,4 @@ export function checkIfTableExist(tableName: string): Promise<boolean> {
         return await table.existsInDatabase();
     });
 }
+*/

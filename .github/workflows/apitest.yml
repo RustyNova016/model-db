@@ -9,6 +9,9 @@ on:
   pull_request:
     branches: [ master, server ]
 
+env:
+  TEST_TENV: GITHUB_WORKFLOW
+
 jobs:
   api-test:
     runs-on: ubuntu-latest

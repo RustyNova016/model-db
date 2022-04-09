@@ -1,8 +1,12 @@
-require('dotenv').config({path: './src/config/dev.env'});
+getEnvVariables();
+import {MySQLConnection} from "./config/MySQLConnection";
 import express from "express";
 //import {initializeApp} from "firebase/app";
 import http from "http";
 import {modelFilesRouter} from "./data/modelFile/modelFiles.router";
+import {getEnvVariables} from "./tools/getEnvVariables";
+
+
 //import {firebaseConfig} from "./config/config";
 
 
@@ -86,8 +90,11 @@ function split(thing: any) {
 
 app._router.stack.forEach(print.bind(null, []))
 
+MySQLConnection.checkConnection().then(r => console.log(r));
+
 /** Listen */
 httpServer.listen(
     process.env.PORT,
     () => console.info(`Server is running ${process.env.HOST}:${process.env.PORT}`)
 );
+

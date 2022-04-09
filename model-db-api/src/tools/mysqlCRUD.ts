@@ -1,3 +1,4 @@
+/*
 import {getTable} from "./getTable";
 
 export class MysqlCRUD {
@@ -20,4 +21,4 @@ export class MysqlCRUD {
         );
     }
 
-}
+}*/

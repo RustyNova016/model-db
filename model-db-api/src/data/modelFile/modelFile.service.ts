@@ -1,8 +1,9 @@
 import {ModelFile, ModelFilePrototype} from "./modelFile.interface";
-import {getTable} from "../../tools/getTable";
+import {MySQLConnection} from "../../config/MySQLConnection";
 
 const modelFiles: any[] = []
-const modelFileTable = getTable("model_file");
+
+const modelFileTable = MySQLConnection.getInstance().getTable("model_file");
 
 /**
  * Service Methods
