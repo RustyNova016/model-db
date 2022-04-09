@@ -1,8 +1,9 @@
+require('dotenv').config({path: './src/config/dev.env'});
 import express from "express";
 import {initializeApp} from "firebase/app";
 import http from "http";
 import {modelFilesRouter} from "./data/modelFile/modelFiles.router";
-import {config, firebaseConfig} from "./config/config";
+import {firebaseConfig} from "./config/config";
 
 
 const app = express();
@@ -48,14 +49,14 @@ app.use((req, res, next) => {
 //
 //    res.status(404).json({
 //        message: error.message
-        //    });
+//    });
 //});
 
 /** Add Routes */
 app.use("/api/data/modelfile", modelFilesRouter)
 
 
-function print (path: any[], layer: any) {
+function print(path: any[], layer: any) {
     if (layer.route) {
         layer.route.stack.forEach(print.bind(null, path.concat(split(layer.route.path))))
     } else if (layer.name === 'router' && layer.handle.stack) {
@@ -67,7 +68,7 @@ function print (path: any[], layer: any) {
     }
 }
 
-function split (thing: any) {
+function split(thing: any) {
     if (typeof thing === 'string') {
         return thing.split('/')
     } else if (thing.fast_slash) {
@@ -87,6 +88,6 @@ app._router.stack.forEach(print.bind(null, []))
 
 /** Listen */
 httpServer.listen(
-    config.server.port,
-    () => console.info(`Server is running ${config.server.host}:${config.server.port}`)
+    process.env.PORT,
+    () => console.info(`Server is running ${process.env.HOST}:${process.env.PORT}`)
 );

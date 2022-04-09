@@ -2,7 +2,7 @@ import {ModelFile, ModelFilePrototype} from "./modelFile.interface";
 import {getTable} from "../../tools/getTable";
 
 const modelFiles: any[] = []
-const modelFileTable = getTable("modelfile");
+const modelFileTable = getTable("model_file");
 
 /**
  * Service Methods

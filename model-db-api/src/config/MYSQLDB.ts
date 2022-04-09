@@ -1,14 +1,14 @@
 import mysqlx from "mysqlx";
-import {config} from "./config";
 
+let connection = {
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    port: 33060,
+};
 /** Mysql create a MySQL connection */
 
-const mySqlSession = mysqlx.getSession({
-    host: config.MYSQL_HOST,
-    user: config.MYSQL_USER,
-    password: config.MYSQL_PASSWORD,
-    port: config.MYSQL_PORT,
-});
+const mySqlSession = mysqlx.getSession(connection);
 
 const databaseSchema = mySqlSession.then((value) => {
     return value.getSchema("model-db");
