@@ -13,8 +13,9 @@ jobs:
   api-test:
     runs-on: ubuntu-latest
 
-    env:
-      working-directory: ./model-db-api
+    defaults:
+      run:
+        working-directory: ./model-db-api
 
     strategy:
       matrix:
@@ -29,6 +30,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
+          cache-dependency-path: model-db-api/yarn.lock
       - run: yarn install
       - run: yarn run build --if-present
       - run: yarn test
