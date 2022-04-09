@@ -10,9 +10,13 @@ on:
     branches: [ master, server ]
 
 jobs:
-  build:
+  api-test:
 
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./model-db-api
 
     strategy:
       matrix:
@@ -21,7 +25,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - run: cd model-db-api
+      # go into the model-db-api directory
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
