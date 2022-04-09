@@ -1,21 +1,34 @@
 import {ModelFile, ModelFilePrototype} from "./modelFile.interface";
-import {getTable} from "../../tools/getTable";
+import {MySQLConnection} from "../../config/MySQLConnection";
 
 const modelFiles: any[] = []
 
-const modelFileTable = getTable("modelFile");
+const modelFileTable = MySQLConnection.getInstance().getTable("model_file");
 
 /**
  * Service Methods
  */
 
-export function findAll(){
+export function findAll() {
+    console.log("findAll");
     return modelFileTable.then(
         table => {
+            // Do a select on the table
             return table.select()
                 .execute()
-                .then(rows => {
-                        return rows.getRows()
+                .then(async rows => {
+                        console.log("log check")
+                        // Get the rows and check if it's an error or not
+                        let rowResult = rows.getRows();
+                        console.log("here's log result!")
+                        console.log(await rowResult);
+
+                        // Check if rowResult is not an array
+                        //if(!Array.isArray(rowResult)){
+                        //    throw new Error(rowResult.toString());
+                        //}
+
+                        return rowResult
                     }
                 )
         }
