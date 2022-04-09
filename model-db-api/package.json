@@ -5,7 +5,7 @@
     "main": "build/server.js",
     "scripts": {
         "build": "tsc",
-        "build&go": "tsc && node build/server.js",
+        "startserver": "tsc && node build/server.js --inspect",
         "nodemon": "nodemon"
     },
     "keywords": [],
