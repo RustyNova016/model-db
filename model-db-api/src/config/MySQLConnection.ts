@@ -58,16 +58,26 @@ export class MySQLConnection {
     }
 
     public async getTable(tableName: string): Promise<ITable> {
-        if (await this.checkIfTableExist(tableName)) {
+        let b = await this.checkIfTableExist(tableName);
+        if (b) {
             return this._schema.then(schema => schema.getTable(tableName));
         } else {
-            throw new Error(`Table "${tableName}" does not exist`);
+            throw new TableDoesNotExistError(tableName);
         }
     }
 
     public checkIfTableExist(tableName: string): Promise<boolean> {
-        return this._schema.then(schema => schema.getTable(tableName)).then(async table => {
-            return await table.existsInDatabase();
-        });
+        return this._schema
+            .then(schema => schema.getTable(tableName)) // get table
+            .then(async table => {
+                return await table.existsInDatabase(); // check if table exists
+            });
+    }
+}
+
+export class TableDoesNotExistError extends Error {
+    constructor(tableName: string) {
+        super(`Table "${tableName}" does not exist`);
+        this.name = "TableDoesNotExistError";
     }
 }

@@ -1,11 +1,14 @@
 import express, { Request, Response } from "express";
-import * as ModelFileService from "./modelFile.service";
-import {ModelFile, ModelFilePrototype} from "./modelFile.interface";
+import {IModelFile, IModelFilePrototype} from "./modelFile.interface";
 import {Row} from "mysqlx";
+import {ModelFileService} from "./modelFile.service";
 const cors = require('cors');
 
-export const modelFilesRouter = express.Router();
+//export const modelFilesRouter = express.Router();
+let modelFileService = new ModelFileService();
+export const modelFilesRouter = modelFileService.generateRouter();
 
+/*
 // GET items
 
 modelFilesRouter.get("/", cors(), async (req: Request, res: Response) => {
@@ -24,7 +27,7 @@ modelFilesRouter.get("/:id", async (req: Request, res: Response) => {
     const id: number = parseInt(req.params.id, 10);
 
     try {
-        const item: ModelFile = await ModelFileService.find(id);
+        const item: IModelFile = await ModelFileService.find(id);
 
         if (item) {
             return res.status(200).send(item);
@@ -40,7 +43,7 @@ modelFilesRouter.get("/:id", async (req: Request, res: Response) => {
 
 modelFilesRouter.post("/", async (req: Request, res: Response) => {
     try {
-        const item: ModelFilePrototype = req.body;
+        const item: IModelFilePrototype = req.body;
 
         const newItem = await ModelFileService.create(item);
 
@@ -56,9 +59,9 @@ modelFilesRouter.put("/:id", async (req: Request, res: Response) => {
     const id: number = parseInt(req.params.id, 10);
 
     try {
-        const itemUpdate: ModelFile = req.body;
+        const itemUpdate: IModelFile = req.body;
 
-        const existingItem: ModelFile = await ModelFileService.find(id);
+        const existingItem: IModelFile = await ModelFileService.find(id);
 
         if (existingItem) {
             const updatedItem = await ModelFileService.update(id, itemUpdate);
@@ -84,4 +87,4 @@ modelFilesRouter.delete("/:id", async (req: Request, res: Response) => {
     } catch (e: any) {
         res.status(500).send(e.message);
     }
-});
+});*/

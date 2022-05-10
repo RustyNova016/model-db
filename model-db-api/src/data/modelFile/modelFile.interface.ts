@@ -1,9 +1,9 @@
-export interface ModelFilePrototype {
+export interface IModelFilePrototype {
     nameModel: string;
     versionNumber: string | "0.0.0";
     dateCreation: Date;
 }
 
-export interface ModelFile extends ModelFilePrototype{
+export interface IModelFile extends IModelFilePrototype{
     idModelFile: number;
 }

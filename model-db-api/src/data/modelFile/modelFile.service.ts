@@ -1,5 +1,16 @@
-import {ModelFile, ModelFilePrototype} from "./modelFile.interface";
+import {IModelFile, IModelFilePrototype} from "./modelFile.interface";
 import {MySQLConnection} from "../../config/MySQLConnection";
+import {MySQLCRUD} from "../../tools/CRUD/MySQLCRUD";
+
+
+export class ModelFileService extends MySQLCRUD {
+    public idFieldName: string = "idModelFile";
+
+    constructor() {
+        super("model_file");
+    }
+}
+
 
 const modelFiles: any[] = []
 
@@ -35,9 +46,9 @@ export function findAll() {
     );
 }
 
-export const find = async (id: number): Promise<ModelFile> => modelFiles[id];
+export const find = async (id: number): Promise<IModelFile> => modelFiles[id];
 
-export const create = async (newItem: ModelFilePrototype): Promise<ModelFile> => {
+export const create = async (newItem: IModelFilePrototype): Promise<IModelFile> => {
     const id = new Date().valueOf();
 
     modelFiles[id] = {
@@ -50,8 +61,8 @@ export const create = async (newItem: ModelFilePrototype): Promise<ModelFile> =>
 
 export const update = async (
     idModelFile: number,
-    itemUpdate: ModelFilePrototype
-): Promise<ModelFile | null> => {
+    itemUpdate: IModelFilePrototype
+): Promise<IModelFile | null> => {
     const item = await find(idModelFile);
 
     if (!item) {

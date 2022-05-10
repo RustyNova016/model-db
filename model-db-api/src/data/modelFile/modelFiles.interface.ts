@@ -1,5 +1,5 @@
-import {ModelFile} from "./modelFile.interface";
+import {IModelFile} from "./modelFile.interface";
 
 export interface ImodelFiles {
-    [key: number]: ModelFile;
+    [key: number]: IModelFile;
 }

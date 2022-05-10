@@ -1,9 +1,9 @@
-GET http://localhost:2525/api/data/modelfile
+GET http://localhost:8080/api/data/modelfile
 Accept: application/json
 Status-URI: 200
 
-###
+################################################################################
 
-GET http://localhost:2525/api/data/modelfile?id=1
+GET http://localhost:8080/api/data/modelfile/1
 Accept: application/json
 Status-URI: 200

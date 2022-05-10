@@ -1,4 +1,5 @@
-import {MySQLConnection} from "./MySQLConnection";
+import {MySQLConnection, TableDoesNotExistError} from "./MySQLConnection";
+import Table from "mysqlx/lib/Table";
 
 // Values
 let existingTableName = "users";
@@ -32,7 +33,7 @@ describe('MySQLConnection class', function () {
 
         it("should not be able to get a non existing table", async function () {
             await expect(MySQLConnection.getInstance().getTable(nonExistingTable)).rejects.toThrow(
-                new Error(`Table "${nonExistingTable}" does not exist`)
+                new TableDoesNotExistError(nonExistingTable)
             );
         });
     });

@@ -1,10 +1,10 @@
+import {getEnvVariables} from "./tools/getEnvVariables";
 getEnvVariables();
 import {MySQLConnection} from "./config/MySQLConnection";
 import express from "express";
 //import {initializeApp} from "firebase/app";
 import http from "http";
 import {modelFilesRouter} from "./data/modelFile/modelFiles.router";
-import {getEnvVariables} from "./tools/getEnvVariables";
 
 
 //import {firebaseConfig} from "./config/config";
@@ -92,9 +92,11 @@ app._router.stack.forEach(print.bind(null, []))
 
 MySQLConnection.checkConnection().then(r => console.log(r));
 
+app.disable('etag');
+
 /** Listen */
 httpServer.listen(
     process.env.PORT,
-    () => console.info(`Server is running ${process.env.HOST}:${process.env.PORT}`)
+    () => console.info(`Server is running at http://${process.env.HOST}:${process.env.PORT}/`)
 );
 
