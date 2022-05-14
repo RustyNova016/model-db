@@ -26,3 +26,5 @@ $RECYCLE.BIN/
 
 /src/config/config.ts
 !/src/config/firebaseConfig.ts
+/.idea/
+/build/
