@@ -1,5 +1,5 @@
 import {ModelFile, ModelFilePrototype} from "./modelFile.interface";
-import {MySQLConnection} from "../../config/MySQLConnection";
+import {MySQLConnection} from "../../config/SequelizeConnection";
 
 const modelFiles: any[] = []
 

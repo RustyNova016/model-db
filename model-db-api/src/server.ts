@@ -3,7 +3,7 @@ import http from "http";
 import {getEnvVariables} from "./tools/getEnvVariables";
 import {requestAPIRules, requestBodyParser, requestErrorHandling, requestLogger} from "./tools/server/requestTools";
 import {logAllRoutes} from "./tools/server/routeLogger";
-import {checkDBConnection} from "./config/MySQLConnection";
+import {checkDBConnection} from "./config/SequelizeConnection";
 
 getEnvVariables();
 
