@@ -30,3 +30,4 @@ yarn-error.log*
 /model-db-api/node_modules/
 /model-db-api/build/
 model-db-api/coverage/
+/model-db-api/src/config/config.ts
