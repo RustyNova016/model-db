@@ -1,7 +1,7 @@
 import sequelize from "../config/SequelizeConnection";
 import {DataTypes} from "sequelize";
 
-export const model_file = sequelize.define('model_file', {
+export const Model_file = sequelize.define('model_file', {
     // Model attributes are defined here
     idModelFile: {
         type: DataTypes.INTEGER,
@@ -14,10 +14,6 @@ export const model_file = sequelize.define('model_file', {
     },
     versionNumber: {
         type: DataTypes.STRING,
-        allowNull: false,
-    },
-    dateCreation: {
-        type: DataTypes.DATE,
         allowNull: false,
     },
     isVersionOf: {

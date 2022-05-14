@@ -6,6 +6,8 @@ import {logAllRoutes} from "./tools/server/routeLogger";
 import {checkDBConnection} from "./config/SequelizeConnection";
 import {syncModels} from "./tools/database/syncModels";
 import logger from "./tools/logger";
+import {SequelizeCRUD} from "./tools/SequelizeCRUD";
+import {Model_file} from "./model/model_file";
 
 getEnvVariables();
 
@@ -18,11 +20,11 @@ const httpServer = http.createServer(app);
 requestLogger(app);
 requestBodyParser(app);
 requestAPIRules(app);
-requestErrorHandling(app);
+//requestErrorHandling(app);
 
 
 /** Step 3: Add Routes */
-//app.use("/api/data/modelfile", modelFilesRouter)
+app.use("/api/data/modelfile", SequelizeCRUD.getRouterFromModel(Model_file));
 logAllRoutes(app);
 
 /** Step 4: Start Server */
