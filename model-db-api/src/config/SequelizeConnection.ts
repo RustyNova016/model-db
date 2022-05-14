@@ -1,5 +1,6 @@
 import {getEnvVariables} from "../tools/getEnvVariables";
 import {Sequelize} from "sequelize";
+import logger from "../tools/logger";
 
 function getSequelize() {
     getEnvVariables();
@@ -11,9 +12,12 @@ function getSequelize() {
 
     console.log("Connecting to MySQL database...");
 
-    return new Sequelize(MYSQL_SCHEMA, MYSQL_USER, MYSQL_PASSWORD, {
+    return new Sequelize(MYSQL_SCHEMA, MYSQL_USER, undefined, {
         host: MYSQL_HOST,
-        dialect: 'mysql'
+        dialect: 'mysql',
+        define: {
+            freezeTableName: true
+        },
     });
 }
 
@@ -23,8 +27,8 @@ export default sequelize;
 export async function checkDBConnection() {
     try {
         await sequelize.authenticate();
-        console.log('Connection has been established successfully.');
+        logger.info('Connection has been established successfully.', "Database");
     } catch (error) {
-        console.error('Unable to connect to the database:', error);
+        logger.error('Unable to connect to the database: \n' + error, "Database");
     }
 }
