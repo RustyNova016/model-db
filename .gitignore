@@ -2,7 +2,8 @@
 
 # dependencies
 /node_modules
-/.pnp
+/model-db-api/node_modules/
+/model-db-client/node_modules//.pnp
 .pnp.js
 
 # testing
@@ -10,6 +11,7 @@
 
 # production
 /build
+/model-db-api/build/
 
 # misc
 .DS_Store
@@ -24,10 +26,7 @@ yarn-error.log*
 
 /model-db-client/src/components/modelCard.css
 /src/components/modelCard.css.map
-/model-db-client/node_modules/
 /model-db-client/src/config/model-db-821c6-firebase-adminsdk-ngizn-bd7e614c25.json
 /.idea/
-/model-db-api/node_modules/
-/model-db-api/build/
 model-db-api/coverage/
 /model-db-api/src/config/config.ts
