@@ -21,6 +21,7 @@
         "firebase": "^9.6.10",
         "firebase-admin": "^10.0.2",
         "mysql": "^2.18.1",
+        "mysql2": "^2.3.3",
         "mysqlx": "^1.1.7",
         "nodemon": "^2.0.15",
         "sequelize": "^6.19.0",

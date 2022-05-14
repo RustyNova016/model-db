@@ -9,6 +9,8 @@ function getSequelize() {
     MYSQL_USER = MYSQL_USER || 'root';
     MYSQL_PASSWORD = MYSQL_PASSWORD || 'root';
 
+    console.log("Connecting to MySQL database...");
+
     return new Sequelize(MYSQL_SCHEMA, MYSQL_USER, MYSQL_PASSWORD, {
         host: MYSQL_HOST,
         dialect: 'mysql'
