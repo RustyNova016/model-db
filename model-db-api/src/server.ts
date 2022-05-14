@@ -1,7 +1,7 @@
 import express, {Express} from "express";
 import http from "http";
 import {getEnvVariables} from "./tools/getEnvVariables";
-import {requestAPIRules, requestBodyParser, requestErrorHandling, requestLogger} from "./tools/server/requestTools";
+import {requestBodyParser, requestLogger} from "./tools/server/requestTools";
 import {logAllRoutes} from "./tools/server/routeLogger";
 import {checkDBConnection} from "./config/SequelizeConnection";
 import {syncModels} from "./tools/database/syncModels";
@@ -19,12 +19,12 @@ const httpServer = http.createServer(app);
 
 requestLogger(app);
 requestBodyParser(app);
-requestAPIRules(app);
+//requestAPIRules(app);
 //requestErrorHandling(app);
 
 
 /** Step 3: Add Routes */
-app.use("/api/data/modelfile", SequelizeCRUD.getRouterFromModel(Model_file));
+app.use("/api/data/model_file", SequelizeCRUD.getRouterFromModel(Model_file));
 logAllRoutes(app);
 
 /** Step 4: Start Server */
@@ -34,7 +34,7 @@ httpServer.listen(
         logger.info(`Server is running ${process.env.HOST}:${process.env.PORT}`)
 
         /** Step 5: Check database connection */
-        checkDBConnection().then((connection) => {
+        checkDBConnection().then(() => {
             syncModels();
         });
     }

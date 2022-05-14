@@ -7,6 +7,7 @@ export const Model_file = sequelize.define('model_file', {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
+        autoIncrement: true
     },
     nameModel: {
         type: DataTypes.STRING,
