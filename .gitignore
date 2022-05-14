@@ -28,3 +28,4 @@ yarn-error.log*
 /model-db-client/src/config/model-db-821c6-firebase-adminsdk-ngizn-bd7e614c25.json
 /.idea/
 /model-db-api/node_modules/
+/model-db-api/build/
