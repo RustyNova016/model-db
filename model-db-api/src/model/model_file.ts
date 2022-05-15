@@ -1,9 +1,10 @@
 import sequelize from "../config/SequelizeConnection";
 import {DataTypes} from "sequelize";
+import {Model_format} from "./model_format";
 
 export const Model_file = sequelize.define('model_file', {
     // Model attributes are defined here
-    idModelFile: {
+    id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
@@ -31,3 +32,5 @@ export const Model_file = sequelize.define('model_file', {
     },
 }, {
 });
+
+Model_file.belongsTo(Model_format);
