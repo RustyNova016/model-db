@@ -10,21 +10,13 @@ export const Model_file = sequelize.define('model_file', {
         primaryKey: true,
         autoIncrement: true
     },
-    nameModel: {
+    name: {
         type: DataTypes.STRING,
         allowNull: false,
     },
     versionNumber: {
         type: DataTypes.STRING,
         allowNull: false,
-    },
-    isVersionOf: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
-    },
-    isEditOf: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
     },
     author: {
         type: DataTypes.INTEGER,
@@ -33,4 +25,15 @@ export const Model_file = sequelize.define('model_file', {
 }, {
 });
 
-Model_file.belongsTo(Model_format);
+Model_file.hasMany(Model_file, {
+    foreignKey: {
+        name: 'isVersionOf',
+        allowNull: true
+    },
+});
+Model_file.hasMany(Model_file, {
+    foreignKey: {
+        name: 'isEditOf',
+        allowNull: true
+    },
+});
