@@ -21,4 +21,4 @@ export const Model_format = sequelize.define('model_format', {
 }, {
 });
 
-Model_format.hasMany(Model_file);
+

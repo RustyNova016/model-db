@@ -1,7 +1,7 @@
 import sequelize from "../config/SequelizeConnection";
 import {DataTypes} from "sequelize";
 
-export const Model_file = sequelize.define('model_file', {
+export const Model_page = sequelize.define('model_page', {
     // Model attributes are defined here
     id: {
         type: DataTypes.INTEGER,
@@ -13,13 +13,10 @@ export const Model_file = sequelize.define('model_file', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    versionNumber: {
-        type: DataTypes.STRING,
+    ageRestricted: {
+        type: DataTypes.BOOLEAN,
         allowNull: false,
-    },
-    author: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
-    },
+    }
 }, {});
+
 

@@ -4,7 +4,7 @@ import {getEnvVariables} from "./tools/getEnvVariables";
 import {requestBodyParser, requestLogger} from "./tools/server/requestTools";
 import {logAllRoutes} from "./tools/server/routeLogger";
 import {checkDBConnection} from "./config/SequelizeConnection";
-import {syncModels} from "./tools/database/syncModels";
+import {migrateDB} from "./tools/database/syncModels";
 import logger from "./tools/logger";
 import {SequelizeCRUD} from "./tools/SequelizeCRUD";
 import {Model_file} from "./model/model_file";
@@ -35,7 +35,7 @@ httpServer.listen(
 
         /** Step 5: Check database connection */
         checkDBConnection().then(() => {
-            syncModels();
+            migrateDB().then();
         });
     }
 );
