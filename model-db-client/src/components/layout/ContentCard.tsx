@@ -1,13 +1,14 @@
 import React, {FunctionComponent} from "react";
 import "../../../src/components/layout/ContentCard.css";
 
-interface IContentCardProps {
+interface IContentCardProps extends React.HTMLAttributes<HTMLDivElement> {
     top?: boolean;
     sides?: boolean;
 }
 
 const ContentCard: FunctionComponent<IContentCardProps> = (props) => {
     let classname = "content-card"
+
     if (props.top){
         classname += " top-border"
     }
