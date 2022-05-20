@@ -1,6 +1,7 @@
 import {Model_file} from "../../model/model_file";
 import {Model_format} from "../../model/model_format";
 import {Model_page} from "../../model/model_page";
+import {User} from "../../model/user";
 
 async function syncModels(models: any[]) {
     for (const model of models) {
@@ -12,7 +13,8 @@ export async function migrateDB() {
     const models = [
         Model_file,
         Model_format,
-        Model_page
+        Model_page,
+        User
     ];
 
     await syncModels(models);
@@ -38,10 +40,16 @@ async function addConstraints() {
         },
     });
 
-
     Model_page.hasMany(Model_file, {
         foreignKey: {
             name: 'shownIn',
+            allowNull: true
+        },
+    });
+
+    Model_page.belongsTo(User, {
+        foreignKey: {
+            name: 'publishedBy',
             allowNull: true
         },
     });
