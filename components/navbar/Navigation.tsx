@@ -1,18 +1,70 @@
-import {Button, Container, Nav, Navbar} from "react-bootstrap";
-import {ReactNode, useContext} from "react";
+import {Container, Nav, Navbar} from "react-bootstrap";
+import {ReactNode} from "react";
+import {signIn, signOut, useSession} from "next-auth/react";
+import {Session} from "next-auth";
+import styles from "./Navigation.module.scss";
+
 //import UserContext from "../context/user";
 
 function NavbarText(props: { className: string, children: ReactNode }) {
     return null;
 }
 
+function NotSignedIn(session: Session | null) {
+    return <>
+        {!session && (
+            <>
+              <span className={styles.notSignedInText}>
+                You are not signed in
+              </span>
+                <a
+                    href={`/api/auth/signin`}
+                    className={styles.buttonPrimary}
+                    onClick={(e) => {
+                        e.preventDefault()
+                        signIn()
+                    }}
+                >
+                    Sign in
+                </a>
+            </>
+        )}
+    </>;
+}
+
+function SignedIn(session: Session | null) {
+    return <>
+        {session?.user && (
+            <>
+                {session.user.image && (
+                    <span
+                        style={{backgroundImage: `url('${session.user.image}')`}}
+                        className={styles.avatar}
+                    />
+                )}
+                <span className={styles.signedInText}>
+                <small>Signed in as</small>
+                <br/>
+                <strong>{session.user.name}</strong>
+                </span>
+                <a
+                    href={`/api/auth/signout`}
+                    className={styles.button}
+                    onClick={(e) => {
+                        e.preventDefault()
+                        signOut()
+                    }}
+                >
+                    Sign out
+                </a>
+            </>
+        )}
+    </>;
+}
+
 export function Navigation() {
-    //const userContext = useContext(UserContext);
-    //const { user } = userContext.userState;
-//
-    //const logout = () => {
-    //    userContext.userDispatch({ type: 'logout', payload: userContext.userState });
-    //}
+    const {data: session, status} = useSession()
+    const loading = status === "loading"
 
     return <>
         <Navbar bg="dark" variant="dark">
@@ -24,23 +76,10 @@ export function Navigation() {
                     <Nav.Link href="/upload">Add models</Nav.Link>
                     <Nav.Link href="/about">About</Nav.Link>
                 </Nav>
-                {/*{user._id !== '' ?
-                    <div>
-                        <Button>
-                            <i className="far fa-sticky-note mr-2"></i>
-                            Post a Blog
-                        </Button>
-                        <NavbarText className="ml-2 mr-2">|</NavbarText>
-                        <Button size="sm" onClick={() => logout()}>
-                            Logout
-                        </Button>
-                    </div>
-
-                    :
-                    <div>
-                        <a>Login</a>|<a>Signup</a>
-                    </div>
-                }*/}
+                <div>
+                    {NotSignedIn(session)}
+                    {SignedIn(session)}
+                </div>
             </Container>
         </Navbar>
     </>;
