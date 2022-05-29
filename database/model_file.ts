@@ -9,7 +9,10 @@ class Model_file extends DBModel<Model_file> {
     declare version: string;
 
     static associate(models: typeof database) {
-        Model_file.hasMany(models.model_file);
+        Model_file.belongsTo(models.model_file, {
+            as: "files",
+            foreignKey: 'pageID',
+        });
     }
 }
 

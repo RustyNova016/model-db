@@ -14,7 +14,10 @@ class Model_page extends DBModel<Model_page> {
     declare ageRestricted: boolean;
 
     static associate(models: typeof database) {
-        Model_page.hasMany(models.model_file);
+        Model_page.hasMany(models.model_file, {
+            as: "files",
+            foreignKey: 'pageID',
+        });
     }
 }
 

@@ -15,7 +15,7 @@ module.exports = {
             [
                 {
                     name: 'test',
-                    versionNumber: '1.0.0',
+                    version: '1.0.0',
                     pageID: 1,
                 }
             ],
