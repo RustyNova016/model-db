@@ -1,6 +1,7 @@
 import {DataTypes, InferAttributes, InferCreationAttributes, Model} from "sequelize";
 import sequelize from "../tools/CRUD/SequelizeConnection";
 import database from "./database";
+import Model_file, {Model_file_response} from "./model_file";
 
 
 export class DBModel<modeltype extends Model> extends Model<InferAttributes<modeltype>, InferCreationAttributes<modeltype>> {
@@ -44,3 +45,7 @@ Model_page.init({
 
 export default Model_page;
 
+/** Type of a responce from the API */
+export interface Model_page_response extends Model_page {
+    files: Model_file_response[];
+}
