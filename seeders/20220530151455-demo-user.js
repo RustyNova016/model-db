@@ -11,18 +11,7 @@ module.exports = {
          *   isBetaMember: false
          * }], {});
          */
-        await queryInterface.bulkInsert('model_files',
-            [
-                {
-                    id: 1,
-                    name: 'ER Archives',
-                    version: '1.0.0',
-                    link: "https://www.aplaybox.com/details/model/jHIfdltIkZn9",
-                    type: '.pmx',
-                    pageID: 1,
-                }
-            ],
-            {});
+
 
     },
 
@@ -33,6 +22,5 @@ module.exports = {
          * Example:
          * await queryInterface.bulkDelete('People', null, {});
          */
-        await queryInterface.bulkDelete('model_files', null, {});
     }
 };

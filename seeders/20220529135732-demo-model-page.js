@@ -11,11 +11,27 @@ module.exports = {
          *   isBetaMember: false
          * }], {});
          */
+        await queryInterface.bulkInsert('user',
+            [
+                {
+                    id: 1,
+                    name: 'RustyNova',
+                    password: "test",
+                    canSeeAgeRestricted: true,
+                }
+            ],
+            {});
+
         await queryInterface.bulkInsert('model_pages',
             [
                 {
-                    name: 'test',
-                    ageRestricted: false
+                    id: 1,
+                    name: 'ER Archives',
+                    ageRestricted: false,
+                    description: 'The ER Archives is a collection of documents and images from the Emergency Room.',
+                    picture: 'https://oss.aplaybox.com/uploads/works/previews/20220521/6ebf7858ece7868c8e6bbb6cc9470df8.jpg',
+                    author: "秋燚QY",
+                    userId: 1,
                 }
             ],
             {});
@@ -28,5 +44,8 @@ module.exports = {
          * Example:
          * await queryInterface.bulkDelete('People', null, {});
          */
+
+        await queryInterface.bulkDelete('model_pages', null, {});
+        await queryInterface.bulkDelete('user', null, {});
     }
 };

@@ -1,16 +1,18 @@
 import sequelize from "../tools/CRUD/SequelizeConnection";
 import {DataTypes} from "sequelize";
-import Model_page, {DBModel} from "./model_page";
+import {DBModel} from "./model_page";
 import database from "./database";
 
 class Model_file extends DBModel<Model_file> {
     declare id: number;
     declare name: string;
     declare version: string;
+    declare link: string;
+    declare type: string;
 
     static associate(models: typeof database) {
         Model_file.belongsTo(models.model_file, {
-            as: "files",
+            as: "user",
             foreignKey: 'pageID',
         });
     }
@@ -27,6 +29,14 @@ Model_file.init({
         allowNull: false
     },
     version: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    link: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    type: {
         type: DataTypes.STRING,
         allowNull: false
     }
