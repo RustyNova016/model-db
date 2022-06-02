@@ -1,7 +1,6 @@
 import {SequelizeCRUD} from "../../../tools/CRUD/SequelizeCRUD";
 import {Identifier, Model, Sequelize} from "sequelize";
 import database from "../../../database/database";
-import sequelize from "../../../tools/CRUD/SequelizeConnection";
 
 export class Model_PageCRUD extends SequelizeCRUD<typeof database.model_page> {
     constructor() {
@@ -22,9 +21,9 @@ export class Model_PageCRUD extends SequelizeCRUD<typeof database.model_page> {
         console.log("findById");
         return this.table.findByPk(id, {
             include: [{
-                    model: database.model_file,
-                    as: "files"
-                },
+                model: database.model_file,
+                as: "files"
+            },
                 {
                     model: database.user,
                     as: "user"

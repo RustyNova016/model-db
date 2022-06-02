@@ -2,8 +2,6 @@ import React, {FunctionComponent} from "react";
 import {Button, Card} from "react-bootstrap";
 import styles from "./modelCard.module.scss";
 import Link from "next/link";
-import {ModelTypePill} from "../../model-db-client/src/components/model/modelTypePill";
-import {IModelType} from "../../model-db-client/src/data/modelType/modelType.interface";
 
 interface IModelCardProps {
     description: string
