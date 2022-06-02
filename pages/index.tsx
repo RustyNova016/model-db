@@ -43,7 +43,7 @@ const Home: NextPage = () => {
                 <PageTitle title={"Bienvenue sur Model DB!"}
                            subtitle={"Model DB est une base de donnée de models 3D lien different sites."}></PageTitle>
 
-                <PageTitle title={"Rechercher a model"}></PageTitle>
+                <PageTitle title={"Rechercher un model"}></PageTitle>
 
                 <Row className={"justify-content-center"}>
                     <Col md={5}>

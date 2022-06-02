@@ -12,12 +12,12 @@ export function DownloadTable(props: DownloadTableParams) {
             <thead>
             <tr>
                 <th>#</th>
-                <th>Model Name</th>
+                <th>Nom</th>
                 <th>Version</th>
-                <th>File type</th>
-                <th>Created at</th>
-                <th>Updated at</th>
-                <th>Download</th>
+                <th>Type</th>
+                <th>Créer le</th>
+                <th>Mis a jour le</th>
+                <th>telecharger</th>
             </tr>
             </thead>
             <tbody>

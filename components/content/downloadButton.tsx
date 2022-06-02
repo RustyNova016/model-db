@@ -14,7 +14,7 @@ export function DownloadButton(props: DownloadButtonParams) {
     return (
         <>
             <Button variant="primary" onClick={handleShow}>
-                Download
+                Telecharger
             </Button>
 
             <Modal show={show} onHide={handleClose} size="lg">

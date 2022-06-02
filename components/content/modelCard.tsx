@@ -24,7 +24,7 @@ const ModelCard: FunctionComponent<IModelCardProps> = (props) => {
                         {props.description}
                     </Card.Text>
                     <Link href={props.link} style={{textAlign: "center"}}>
-                        <Button variant="primary">See the model</Button>
+                        <Button variant="primary">Voir le model</Button>
                     </Link>
                 </Card.Body>
             </Card>

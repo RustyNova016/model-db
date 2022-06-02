@@ -20,6 +20,14 @@ module.exports = {
                     link: "https://www.aplaybox.com/details/model/jHIfdltIkZn9",
                     type: '.pmx',
                     pageID: 1,
+                },
+                {
+                    id: 2,
+                    name: 'Starchasm Nyx',
+                    version: '1.0.0',
+                    link: "https://www.aplaybox.com/details/model/8W2sxH3lYZaE",
+                    type: '.pmx',
+                    pageID: 2,
                 }
             ],
             {});

@@ -25,7 +25,7 @@ interface ModelPageProps {
 function Model_pageComponent(props: ModelPageProps) {
     return <>
         <CommonStyle>
-            <PageTitle title={props.model.name + " by " + props.model.author}/>
+            <PageTitle title={props.model.name + " de " + props.model.author}/>
 
             <ContentDiv>
                 <img src={props.model.picture} alt={props.model.name}/>

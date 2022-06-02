@@ -32,6 +32,15 @@ module.exports = {
                     picture: 'https://media.discordapp.net/attachments/639795231876710400/981807034464870420/unknown.png?width=1191&height=670',
                     author: "秋燚QY",
                     userId: 1,
+                },
+                {
+                    id: 2,
+                    name: 'Starchasm Nyx',
+                    ageRestricted: false,
+                    description: 'Starchasm Nyx de HI3.',
+                    picture: 'https://media.discordapp.net/attachments/639795231876710400/981808485543067698/unknown.png?width=1191&height=670',
+                    author: "神帝宇",
+                    userId: 1,
                 }
             ],
             {});
