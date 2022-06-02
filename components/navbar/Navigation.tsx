@@ -45,7 +45,7 @@ function SignedIn(session: Session | null) {
     return <>
         {session?.user && (
             <>
-                {session.user.image && (
+                {/*{session.user.image && (
                     <span
                         style={{backgroundImage: `url('${session.user.image}')`}}
                         className={styles.avatar}
@@ -55,7 +55,7 @@ function SignedIn(session: Session | null) {
                 <small>Signed in as</small>
                 <br/>
                 <strong>{session.user.name}</strong>
-                </span>
+                </span>*/}
                 <a
                     href={`/api/auth/signout`}
                     className={styles.button}
@@ -80,6 +80,7 @@ export function Navigation() {
             <Container>
                 <Navbar.Brand href="">Model DB</Navbar.Brand>
                 <Nav className="me-auto">
+                    <Link href={"http://localhost:3000/model/add"}>Ajouter un model</Link>
                 </Nav>
                 <div>
                     {NotSignedIn(session)}

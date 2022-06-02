@@ -30,10 +30,8 @@ function AddModel() {
 
     const onSubmit: SubmitHandler<Inputs> = async data => {
         console.log(data);
-        const formData = new FormData();
-        formData.append("file", data.picture[0]);
 
-        const res = await axios.post("http://localhost:3000/api/model_page/submit", formData)
+        const res = await axios.post("http://localhost:3000/api/model_page/submit", data)
 
         alert(JSON.stringify(`${res.data}, status: ${res.status}`));
     };
@@ -46,7 +44,7 @@ function AddModel() {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="mb-3">
                         {/* register your input into the hook by invoking the "register" function */}
-                        <label className="form-label">Name</label>
+                        <label className="form-label">Nom</label>
                         <input placeholder={"name"} className="form-control" {...register("name", {required: true})} />
                         {errors.name && <span>This field is required</span>}
                     </div>
@@ -57,12 +55,12 @@ function AddModel() {
                     </div>
 
                     <div className="mb-3">
-                        <label className="form-label">Picture</label>
-                        <input className="form-control" type="file" {...register("picture")} />
+                        <label className="form-label">URL de l'image</label>
+                        <input className="form-control" {...register("picture")} />
                     </div>
 
                     <div className="mb-3">
-                        <label className="form-label">Author</label>
+                        <label className="form-label">Auteur</label>
                         <input className="form-control" {...register("author", {required: true})} />
                         {errors.author && <span>This field is required</span>}
                     </div>

@@ -14,7 +14,7 @@ const ModelCard: FunctionComponent<IModelCardProps> = (props) => {
 
     return (
         <>
-            <Card style={{width: "18rem"}} className={styles.modelCard}>
+            <Card style={{width: "18rem", margin: "10px"}} className={styles.modelCard}>
                 <Card.Img variant="top" src={props.imgLink}/>
                 <Card.Body>
                     <Card.Title style={{textAlign: "center"}}>{props.title}</Card.Title>

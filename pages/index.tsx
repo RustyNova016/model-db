@@ -32,7 +32,6 @@ const Home: NextPage = () => {
     }, []);
 
 
-
     function handleInput(e: { target: { value: SetStateAction<string>; }; }) {
         setSearch(e.target.value);
     }
@@ -60,17 +59,20 @@ const Home: NextPage = () => {
                 </Row>
 
                 <ContentDiv sides={true}>
-
-                    {(models.length > 0) ?
-                        models.map((model) => {
-                            return (
-                                <ModelCard description={model.description}
-                                           link={"http://localhost:3000/model/" + model.id}
-                                           title={model.name}
-                                           imgLink={model.picture}/>)
-                        }):
-                        <h3>No models found</h3>
-                    }
+                    <Col>
+                        <Row>
+                            {(models.length > 0) ?
+                                models.map((model) => {
+                                    return (
+                                        <ModelCard description={model.description}
+                                                   link={"http://localhost:3000/model/" + model.id}
+                                                   title={model.name}
+                                                   imgLink={model.picture}/>)
+                                }) :
+                                <h3>No models found</h3>
+                            }
+                        </Row>
+                    </Col>
                 </ContentDiv>
 
 
