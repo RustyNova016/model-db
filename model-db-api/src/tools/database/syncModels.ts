@@ -1,7 +1,7 @@
-import {Model_file} from "../../model/model_file";
-import {Model_format} from "../../model/model_format";
-import {Model_page} from "../../model/model_page";
-import {User} from "../../model/user";
+import {Model_file} from "../../../../database/model_file";
+import {Model_format} from "../../../../database/model_format";
+import {Model_page} from "../../../../database/model_page";
+import {User} from "../../../../database/user";
 
 async function syncModels(models: any[]) {
     for (const model of models) {

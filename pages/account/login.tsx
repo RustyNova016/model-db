@@ -4,74 +4,78 @@ import {PageTitle} from "../../components/content/PageTitle";
 import {CenteredDiv} from "../../components/layout/CenteredDiv";
 import ContentDiv from "../../components/layout/ContentDiv";
 import {useRouter} from "next/router";
-import {useForm} from "react-hook-form";
-import * as Yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
 import Link from "next/link";
-import {userService} from "../../services/user.service";
-import {alertService} from "../../services/alert.service";
+import {useState} from "react";
+import {useForm} from "react-hook-form";
 
+type FormInputs = {
+    username: string,
+    password: string
+}
 
 const LoginPage: NextPage = () => {
     const router = useRouter();
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const {register, handleSubmit, watch, formState} = useForm<FormInputs>();
 
-    // form validation rules
-    const validationSchema = Yup.object().shape({
-        username: Yup.string().required('Username is required'),
-        password: Yup.string().required('Password is required')
-    });
-    const formOptions = { resolver: yupResolver(validationSchema) };
+    function onSubmit(data: any) {
+        // Prevent page reload
+        console.log("Login form submitted");
+        console.log(data);
 
-    // get functions to build form with useForm() hook
-    const { register, handleSubmit, formState } = useForm(formOptions);
-    const { errors } = formState;
-
-    function onSubmit({ username, password }) {
-        return userService.login(username, password)
-            .then(() => {
-                // get return url from query parameters or default to '/'
-                const returnUrl = router.query.returnUrl || '/';
-                router.push(returnUrl);
-            })
-            .catch(alertService.error);
+        //return userService.login(event.target.valueOf(), password)
+        //    .then(() => {
+        //        // get return url from query parameters or default to '/'
+        //        const returnUrl = router.query.returnUrl || '/';
+        //        router.push(returnUrl).then();
+        //    })
+        //.catch(alertService.error);
     }
 
     return (
-        <CommonStyle>
+        <>
+            <CommonStyle>
+                <PageTitle title={"Login"}></PageTitle>
+                <CenteredDiv>
+                    <ContentDiv sides={true}>
+                        <div className="card">
+                            <h4 className="card-header">Login</h4>
+                            <div className="card-body">
+                                <form onSubmit={handleSubmit(onSubmit)}>
 
-            <PageTitle title={"Login"}></PageTitle>
+                                    <div className="form-group">
+                                        <label>Username</label>
 
-            <CenteredDiv>
-                <ContentDiv sides={true}>
-                    <div className="card">
-                        <h4 className="card-header">Login</h4>
-                        <div className="card-body">
-                            <form onSubmit={handleSubmit(onSubmit)}>
-                                <div className="form-group">
-                                    <label>Username</label>
-                                    <input name="username" type="text" {...register('username')}
-                                           className={`form-control ${errors.username ? 'is-invalid' : ''}`}/>
-                                    <div className="invalid-feedback">{errors.username?.message}</div>
-                                </div>
-                                <div className="form-group">
-                                    <label>Password</label>
-                                    <input name="password" type="password" {...register('password')}
-                                           className={`form-control ${errors.password ? 'is-invalid' : ''}`}/>
-                                    <div className="invalid-feedback">{errors.password?.message}</div>
-                                </div>
-                                <button disabled={formState.isSubmitting} className="btn btn-primary">
-                                    {formState.isSubmitting &&
-                                        <span className="spinner-border spinner-border-sm mr-1"></span>}
-                                    Login
-                                </button>
-                                <Link href="/account/register" className="btn btn-link">Register</Link>
-                            </form>
+                                        <input type="text"
+                                               className="form-control"
+                                               {...register("username")}/>
+
+                                        {/*<div className="invalid-feedback">{errors.username?.message}</div>*/}
+                                    </div>
+
+                                    <div className="form-group">
+                                        <label>Password</label>
+                                        <input type="password"
+                                               className="form-control"
+                                               {...register("password")}/>
+                                        {/*<div className="invalid-feedback">{errors.password?.message}</div>*/}
+                                    </div>
+                                    <button className="btn btn-primary">
+                                        {formState.isSubmitting &&
+                                            <span className="spinner-border spinner-border-sm mr-1"></span>}
+                                        Login
+                                    </button>
+                                    <Link href="/account/register" className="btn btn-link">Register</Link>
+                                </form>
+                            </div>
                         </div>
-                    </div>
 
-                </ContentDiv>
-            </CenteredDiv>
-        </CommonStyle>
+                    </ContentDiv>
+                </CenteredDiv>
+            </CommonStyle>
+        </>
+
     )
 }
 

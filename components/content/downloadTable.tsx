@@ -1,5 +1,6 @@
 import {Table} from "react-bootstrap";
 import Model_file, {Model_file_response} from "../../database/model_file";
+import Link from "next/link";
 
 export interface DownloadTableParams {
     modelfiles: Model_file_response[];
@@ -7,7 +8,7 @@ export interface DownloadTableParams {
 
 export function DownloadTable(props: DownloadTableParams) {
     return <>
-        <Table striped bordered hover>
+        <Table striped bordered hover variant="dark">
             <thead>
             <tr>
                 <th>#</th>
@@ -25,10 +26,10 @@ export function DownloadTable(props: DownloadTableParams) {
                     <td>{index + 1}</td>
                     <td>{file.name}</td>
                     <td>{file.version}</td>
-                    {/*<td>{file.file_type}</td>
-                    <td>{file.created_at}</td>
-                    <td>{file.updated_at}</td>
-                    <td>{file.file_type}</td>*/}
+                    <td>{file.type}</td>
+                    <td>{file.createdAt?.toDateString()}</td>
+                    <td>{file.updatedAt?.toDateString()}</td>
+                    <td> <Link href={file.link}>{file.link}</Link></td>
                 </tr>
             })}
             </tbody>

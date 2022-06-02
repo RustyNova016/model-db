@@ -29,7 +29,7 @@ module.exports = {
                     name: 'ER Archives',
                     ageRestricted: false,
                     description: 'The ER Archives is a collection of documents and images from the Emergency Room.',
-                    picture: 'https://oss.aplaybox.com/uploads/works/previews/20220521/6ebf7858ece7868c8e6bbb6cc9470df8.jpg',
+                    picture: 'https://media.discordapp.net/attachments/639795231876710400/981807034464870420/unknown.png?width=1191&height=670',
                     author: "秋燚QY",
                     userId: 1,
                 }

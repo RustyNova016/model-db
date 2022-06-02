@@ -17,7 +17,7 @@ export function DownloadButton(props: DownloadButtonParams) {
                 Download
             </Button>
 
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={show} onHide={handleClose} size="lg">
                 <Modal.Header closeButton style={{backgroundColor: "#2b2b2b"}}>
                     <Modal.Title>Download Model</Modal.Title>
                 </Modal.Header>

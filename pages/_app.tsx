@@ -1,16 +1,18 @@
 import '../styles/global.scss'
 import type {AppProps} from 'next/app'
-import {ReactQueryDevtools} from "react-query/devtools";
-import {QueryClient, QueryClientProvider} from "react-query";
+import {QueryClient} from "react-query";
+import {SessionProvider} from "next-auth/react";
 
 const queryClient = new QueryClient();
 
+//dotenv.config({path: path.resolve(__dirname, "../config/config.env")});
+
 function MyApp({Component, pageProps}: AppProps) {
     return <>
-        <QueryClientProvider client={queryClient}>
+
+        <SessionProvider session={pageProps.session} refetchInterval={0}>
             <Component {...pageProps} />
-            <ReactQueryDevtools></ReactQueryDevtools>
-        </QueryClientProvider>
+        </SessionProvider>
     </>
 }
 

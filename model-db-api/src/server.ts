@@ -3,11 +3,11 @@ import http from "http";
 import {getEnvVariables} from "./tools/getEnvVariables";
 import {requestBodyParser, requestLogger} from "./tools/server/requestTools";
 import {logAllRoutes} from "./tools/server/routeLogger";
-import {checkDBConnection} from "./config/SequelizeConnection";
+import {checkDBConnection} from "../../tools/CRUD/SequelizeConnection";
 import {migrateDB} from "./tools/database/syncModels";
 import logger from "./tools/logger";
 import {SequelizeCRUD} from "./tools/SequelizeCRUD";
-import {Model_file} from "./model/model_file";
+import {Model_file} from "../../database/model_file";
 
 getEnvVariables();
 

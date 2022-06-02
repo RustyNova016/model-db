@@ -1,8 +1,9 @@
 import {SequelizeCRUD} from "../../../tools/CRUD/SequelizeCRUD";
-import {Identifier, Model} from "sequelize";
+import {Identifier, Model, Sequelize} from "sequelize";
 import database from "../../../database/database";
+import sequelize from "../../../tools/CRUD/SequelizeConnection";
 
-class Model_PageCRUD extends SequelizeCRUD<typeof database.model_page> {
+export class Model_PageCRUD extends SequelizeCRUD<typeof database.model_page> {
     constructor() {
         super(database.model_page);
     }
@@ -21,9 +22,24 @@ class Model_PageCRUD extends SequelizeCRUD<typeof database.model_page> {
         console.log("findById");
         return this.table.findByPk(id, {
             include: [{
-                model: database.model_file,
-                as: "files"
-            }]
+                    model: database.model_file,
+                    as: "files"
+                },
+                {
+                    model: database.user,
+                    as: "user"
+                }]
+        });
+    }
+
+    findByName(name: string): Promise<Model<any, any>[] | null> {
+        console.log("findByName");
+        return this.table.findAll({
+            where: {
+                name: {
+                    [Sequelize.Op.like]: `%${name}%`
+                }
+            }
         });
     }
 }
