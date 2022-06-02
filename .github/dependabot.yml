@@ -6,13 +6,7 @@
 version: 2
 updates:
   - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/model-db-client/" # Location of package manifests
-    schedule:
-      interval: "daily"
-    open-pull-requests-limit: 20
-
-  - package-ecosystem: "npm"
-    directory: "/model-db-api/"
+    directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
     open-pull-requests-limit: 20
