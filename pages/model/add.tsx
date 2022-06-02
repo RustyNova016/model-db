@@ -33,7 +33,7 @@ function AddModel() {
 
         const res = await axios.post("http://localhost:3000/api/model_page/submit", data)
 
-        alert(JSON.stringify(`${res.data}, status: ${res.status}`));
+        alert("Model Ajouté!");
     };
 
     return <>
