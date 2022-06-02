@@ -18,8 +18,6 @@ export default function Register() {
 
 
     const onSubmit: SubmitHandler<Inputs> = async data => {
-        console.log(data);
-
         const res = await axios.post("http://localhost:3000/api/user/register", data)
 
         if (res.status === 200) {

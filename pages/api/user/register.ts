@@ -11,7 +11,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         password: req.body.password,
         canSeeAgeRestricted: 1
     };
-    console.log(data1);
     const data = CRUD.create(data1);
     res.status(200).json(data);
 }
