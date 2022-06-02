@@ -78,7 +78,7 @@ export function Navigation() {
     return <>
         <Navbar bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand href="">Model DB</Navbar.Brand>
+                <Navbar.Brand href="http://localhost:3000/">Model DB</Navbar.Brand>
                 <Nav className="me-auto">
                     <Link href={"http://localhost:3000/model/add"}>Ajouter un model</Link>
                 </Nav>

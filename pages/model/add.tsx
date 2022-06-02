@@ -38,7 +38,7 @@ function AddModel() {
 
     return <>
         <CommonStyle>
-            <PageTitle title={"Share a model"}/>
+            <PageTitle title={"Partage un model"}/>
 
             <ContentDiv>
                 <form onSubmit={handleSubmit(onSubmit)}>
