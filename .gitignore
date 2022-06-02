@@ -10,24 +10,35 @@
 # testing
 /coverage
 
+# next.js
+/.next/
+/out/
+
 # production
 /build
 /model-db-api/build/
 
 # misc
 .DS_Store
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# local env files
+.env*.local
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# vercel
+.vercel
 
-/model-db-client/src/components/modelCard.css
-/src/components/modelCard.css.map
-/model-db-client/src/config/model-db-821c6-firebase-adminsdk-ngizn-bd7e614c25.json
+# typescript
+*.tsbuildinfo
+
+#IDE
 /.idea/
-model-db-api/coverage/
-/model-db-api/src/config/config.ts
