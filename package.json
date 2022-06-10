@@ -23,7 +23,7 @@
         "mysql2": "^2.3.3",
         "next": "12.1.6",
         "next-auth": "^4.3.4",
-        "node-fetch": "^3.2.4",
+        "node-fetch": "^3.2.6",
         "react": "18.1.0",
         "react-awesome-reveal": "^4.0.0-beta.2",
         "react-bootstrap": "^2.3.1",
